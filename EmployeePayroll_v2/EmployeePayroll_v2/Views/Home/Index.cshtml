@@ -1,0 +1,26 @@
+﻿@*
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+*@
+
+@{
+    ViewData["Title"] = "Home Page";
+    @*
+    var appName = Configuration.GetSection("AppConfigSettings").GetValue<string>("AppName");
+    var appVersion = Configuration.GetSection("AppConfigSettings").GetValue<string>("AppVersion");
+    var author = Configuration.GetSection("AppConfigSettings").GetValue<string>("Author");
+    *@
+    MyConfig config = new MyConfig();
+    var appName = config.AppName;
+    var appVersion = config.AppVersion;
+    var author = config.Author;
+}
+
+<div class="text-center">
+@* 
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+ *@
+    <h1 class="display-4">@appName @appVersion</h1>
+    <p>Created by @author using ASP.NET Core</p>
+</div>
